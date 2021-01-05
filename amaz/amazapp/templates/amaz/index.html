@@ -1,0 +1,620 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Industrious by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" href="index.html">Industrious</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="elements.html">Elements</a></li>
+					<li><a href="generic.html">Generic</a></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+			<section id="banner" style="height: 700px;">
+				<div class="inner">
+					<h1>놀라운 토요일</h1>
+					<p>받아쓰기 정답 알아보기</p>
+				</div>
+				<video autoplay loop muted playsinline src="{% static 'images/amz_01.mp4' %}"></video>
+			</section>
+
+		<!-- Highlights -->
+			<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>멤버 받아쓰기 점수</h2>
+						<p>놀라운 토요일-도레미마켓 128화 [조세호 - 그녀의 전화번호]</p>
+					</header>
+                    <section>
+                    <header class="content">
+                        <h2>가사 정답 입력하기</h2>
+                        <div class="row">
+                        <input  placeholder="가사를 입력하세요" type="text"  id='answer' class="col-10" style=" background-color:transparent;">
+                        <button class="button primary icon fa-search col-2" id="result" style="text-align: center">입력하기</button>
+                        </div>
+                        <h3 style="margin-top: 20px;">가사 정답 단어 리스트</h3>
+                        <div id='one'></div>
+                        <h3 style="margin-top: 20px;">중복 포함 가사 정답 단어 리스트</h3>
+                        <div id='two'></div>
+                    </header>
+                    </section>
+					<div class="highlights">
+						<section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/세윤.png' %}" alt="" />
+									<h2>문세윤</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="one_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>세윤 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="세윤정답_list" >입력하기</a>
+                                        <input  placeholder="세윤 받쓰를 입력하세요" class="col-12" type="text"  id='세윤정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">세윤 받쓰 단어</h3>
+                                        <div id='one_one' class="col-12"></div>
+                                        <h3>중복 포함 세윤 받쓰 단어</h3>
+                                        <div id='one_two' class="col-12"></div>
+                                        <h3>세윤 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='one_three' class="col-12"></div>
+                                        <h3>세윤 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='one_four' class="col-12"></div>
+                                    </div>
+                                </div>
+
+                            </header>
+						</section>
+						<section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/동현.png' %}" alt="" />
+									<h2>김동현</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="two_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>동현 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="동현정답_list" >입력하기</a>
+                                        <input  placeholder="동현 받쓰를 입력하세요" class="col-12" type="text"  id='동현정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">동현 받쓰 단어</h3>
+                                        <div id='two_one' class="col-12"></div>
+                                        <h3>중복 포함 동현 받쓰 단어</h3>
+                                        <div id='two_two' class="col-12"></div>
+                                        <h3>동현 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='two_three' class="col-12"></div>
+                                        <h3>동현 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='two_four' class="col-12"></div>
+                                    </div>
+                                </div>
+
+                            </header>
+						</section>
+						<section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/피오.png' %}" alt="" />
+									<h2>피오</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="three_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>피오 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="피오정답_list" >입력하기</a>
+                                        <input  placeholder="피오 받쓰를 입력하세요" class="col-12" type="text"  id='피오정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">피오 받쓰 단어</h3>
+                                        <div id='three_one' class="col-12"></div>
+                                        <h3>중복 포함 피오 받쓰 단어</h3>
+                                        <div id='three_two' class="col-12"></div>
+                                        <h3>피오 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='three_three' class="col-12"></div>
+                                        <h3>피오 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='three_four' class="col-12"></div>
+                                    </div>
+                                </div>
+
+                            </header>
+						</section>
+						<section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/넉살.png' %}" alt="" />
+									<h2>넉살</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="four_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>넉살 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="넉살정답_list" >입력하기</a>
+                                        <input  placeholder="넉살 받쓰를 입력하세요" class="col-12" type="text"  id='넉살정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">넉살 받쓰 단어</h3>
+                                        <div id='four_one' class="col-12"></div>
+                                        <h3>중복 포함 넉살 받쓰 단어</h3>
+                                        <div id='four_two' class="col-12"></div>
+                                        <h3>넉살 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='four_three' class="col-12"></div>
+                                        <h3>넉살 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='four_four' class="col-12"></div>
+                                    </div>
+                                </div>
+                            </header>
+						</section>
+						<section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/혜리.png' %}" alt="" />
+									<h2>혜리</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="five_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>혜리 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="혜리정답_list" >입력하기</a>
+                                        <input  placeholder="혜리 받쓰를 입력하세요" class="col-12" type="text"  id='혜리정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">혜리 받쓰 단어</h3>
+                                        <div id='five_one' class="col-12"></div>
+                                        <h3>중복 포함 혜리 받쓰 단어</h3>
+                                        <div id='five_two' class="col-12"></div>
+                                        <h3>혜리 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='five_three' class="col-12"></div>
+                                        <h3>혜리 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='five_four' class="col-12"></div>
+                                    </div>
+                                </div>
+                            </header>
+						</section>
+						<section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/동엽.png' %}" alt="" />
+									<h2>신동엽</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="six_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>동엽 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="동엽정답_list" >입력하기</a>
+                                        <input  placeholder="동엽 받쓰를 입력하세요" class="col-12" type="text"  id='동엽정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">동엽 받쓰 단어</h3>
+                                        <div id='six_one' class="col-12"></div>
+                                        <h3>중복 포함 동엽 받쓰 단어</h3>
+                                        <div id='six_two' class="col-12"></div>
+                                        <h3>동엽 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='six_three' class="col-12"></div>
+                                        <h3>동엽 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='six_four' class="col-12"></div>
+                                    </div>
+                                </div>
+                            </header>
+						</section>
+                        <section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/동욱.png' %}" alt="" />
+									<h2>이동욱</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="seven_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>동욱 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="동욱정답_list" >입력하기</a>
+                                        <input  placeholder="동욱 받쓰를 입력하세요" class="col-12" type="text"  id='동욱정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">동욱 받쓰 단어</h3>
+                                        <div id='seven_one' class="col-12"></div>
+                                        <h3>중복 포함 동욱 받쓰 단어</h3>
+                                        <div id='seven_two' class="col-12"></div>
+                                        <h3>동욱 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='seven_three' class="col-12"></div>
+                                        <h3>동욱 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='seven_four' class="col-12"></div>
+                                    </div>
+                                </div>
+                            </header>
+						</section>
+                        <section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/보아.png' %}" alt="" />
+									<h2>조보아</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="eight_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>보아 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="보아정답_list" >입력하기</a>
+                                        <input  placeholder="보아 받쓰를 입력하세요" class="col-12" type="text"  id='보아정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">보아 받쓰 단어</h3>
+                                        <div id='eight_one' class="col-12"></div>
+                                        <h3>중복 포함 보아 받쓰 단어</h3>
+                                        <div id='eight_two' class="col-12"></div>
+                                        <h3>보아 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='eight_three' class="col-12"></div>
+                                        <h3>보아 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='eight_four' class="col-12"></div>
+                                    </div>
+                                </div>
+                            </header>
+						</section>
+                        <section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/범.png' %}" alt="" />
+									<h2>김범</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="nine_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>김범 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="김범정답_list" >입력하기</a>
+                                        <input  placeholder="김범 받쓰를 입력하세요" class="col-12" type="text"  id='김범정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">김범 받쓰 단어</h3>
+                                        <div id='nine_one' class="col-12"></div>
+                                        <h3>중복 포함 김범 받쓰 단어</h3>
+                                        <div id='nine_two' class="col-12"></div>
+                                        <h3>김범 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='nine_three' class="col-12"></div>
+                                        <h3>김범 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='nine_four' class="col-12"></div>
+                                    </div>
+                                </div>
+                            </header>
+						</section>
+                        <section style="width: 100%">
+							<header class="content">
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">
+									<img src="{% static 'images/나래.png' %}" alt="" />
+									<h2>박나래</h2>
+                                    <h1> 정답 개수</h1>
+                                    <h2 id="ten_sum"></h2>
+                                    </div>
+                                    <div class="row col-9">
+                                        <label for="two-result" style="text-align: left;"  class="col-6"><h3>나래 받쓰 입력하기</h3></label>
+                                        <a class="button primary small col-3" id="나래정답_list" >입력하기</a>
+                                        <input  placeholder="나래 받쓰를 입력하세요" class="col-12" type="text"  id='나래정답' style=" background-color:transparent;">
+                                        <h3 style="margin-top: 20px;">나래 받쓰 단어</h3>
+                                        <div id='ten_one' class="col-12"></div>
+                                        <h3>중복 포함 나래 받쓰 단어</h3>
+                                        <div id='ten_two' class="col-12"></div>
+                                        <h3>나래 받쓰와 같은 정답 가사 단어</h3>
+                                        <div id='ten_three' class="col-12"></div>
+                                        <h3>나래 받쓰에 없는 정답 가사 단어</h3>
+                                        <div id='ten_four' class="col-12"></div>
+                                    </div>
+                                </div>
+                            </header>
+						</section>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>Accumsan montes viverra</h3>
+							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+						</section>
+						<section>
+							<h4>Sem turpis amet semper</h4>
+							<ul class="alt">
+								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
+								<li><a href="#">Etiam vel lorem sed amet.</a></li>
+								<li><a href="#">Felis enim feugiat viverra.</a></li>
+								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>Magna sed ipsum</h4>
+							<ul class="plain">
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+							</ul>
+						</section>
+					</div>
+					<div class="copyright">
+						&copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a href="https://coverr.co">Coverr</a>.
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+            <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script>
+            $(document).ready(function() {
+                $('#result').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer_list'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#one').empty()
+                            $('#one').html('<p>'+data[0].answer_list+'</p>')
+                            $('#two').empty()
+                            $('#two').html('<p>'+data[0].answer_list_set+'</p>')
+                        }
+                    })
+                })
+                 $('#세윤정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#세윤정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#one_one').empty()
+                            $('#one_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#one_two').empty()
+                            $('#one_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#one_three').empty()
+                            $('#one_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#one_four').empty()
+                            $('#one_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#one_sum').empty()
+                            $('#one_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#동현정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#동현정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#two_one').empty()
+                            $('#two_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#two_two').empty()
+                            $('#two_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#two_three').empty()
+                            $('#two_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#two_four').empty()
+                            $('#two_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#two_sum').empty()
+                            $('#two_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#피오정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#피오정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#three_one').empty()
+                            $('#three_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#three_two').empty()
+                            $('#three_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#three_three').empty()
+                            $('#three_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#three_four').empty()
+                            $('#three_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#three_sum').empty()
+                            $('#three_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#넉살정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#넉살정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#four_one').empty()
+                            $('#four_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#four_two').empty()
+                            $('#four_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#four_three').empty()
+                            $('#four_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#four_four').empty()
+                            $('#four_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#four_sum').empty()
+                            $('#four_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#혜리정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#혜리정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#five_one').empty()
+                            $('#five_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#five_two').empty()
+                            $('#five_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#five_three').empty()
+                            $('#five_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#five_four').empty()
+                            $('#five_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#five_sum').empty()
+                            $('#five_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#동엽정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#동엽정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#six_one').empty()
+                            $('#six_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#six_two').empty()
+                            $('#six_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#six_three').empty()
+                            $('#six_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#six_four').empty()
+                            $('#six_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#six_sum').empty()
+                            $('#six_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#동욱정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#동욱정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#seven_one').empty()
+                            $('#seven_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#seven_two').empty()
+                            $('#seven_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#seven_three').empty()
+                            $('#seven_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#seven_four').empty()
+                            $('#seven_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#seven_sum').empty()
+                            $('#seven_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#보아정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#보아정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#eight_one').empty()
+                            $('#eight_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#eight_two').empty()
+                            $('#eight_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#eight_three').empty()
+                            $('#eight_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#eight_four').empty()
+                            $('#eight_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#eight_sum').empty()
+                            $('#eight_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#김범정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#김범정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#nine_one').empty()
+                            $('#nine_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#nine_two').empty()
+                            $('#nine_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#nine_three').empty()
+                            $('#nine_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#nine_four').empty()
+                            $('#nine_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#nine_sum').empty()
+                            $('#nine_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+                $('#나래정답_list').click(function() {
+                    $.ajax({
+                        url : "{% url 'answer3'%}",
+                        type : 'post',
+                        data : { 'csrfmiddlewaretoken' : '{{csrf_token}}',
+                                answer : $('#answer').val(),
+                                answer_출연진 : $('#나래정답').val()
+                                },
+                        dataType : 'json',
+                        success : function(data) {
+                            $('#ten_one').empty()
+                            $('#ten_one').html('<p>'+data[0].answer_출연진_list+'</p>')
+                            $('#ten_two').empty()
+                            $('#ten_two').html('<p>'+data[0].answer_출연진_list_set+'</p>')
+                            $('#ten_three').empty()
+                            $('#ten_three').html('<p>'+data[0].정답_출연진_같은언어+'</p>')
+                            $('#ten_four').empty()
+                            $('#ten_four').html('<p>'+data[0].정답_출연진_다른언어+'</p>')
+                            $('#ten_sum').empty()
+                            $('#ten_sum').html('<p>'+data[0].정답개수+'</p>')
+                        }
+                    })
+                })
+
+
+            });
+        </script>
+
+	</body>
+</html>
