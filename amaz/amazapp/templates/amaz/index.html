@@ -50,6 +50,9 @@
 					<header class="special">
 						<h2>멤버 받아쓰기 점수</h2>
 						<p>놀라운 토요일-도레미마켓 128화 [조세호 - 그녀의 전화번호]</p>
+                        <p id="p">
+                          여기
+                        </p>
 					</header>
                     <section>
                     <header class="content">
@@ -615,6 +618,17 @@
 
             });
         </script>
+    <script>
+        var person = JSON.parse("{{ test|escapejs }}");
 
+        var newDIV = document.createElement("div");
+        newDIV.innerHTML = person['test1'];
+        newDIV.setAttribute("id","myDiv");
+
+        var p = document.getElementById("p");
+        p.appendChild(newDIV);
+
+        console.log(person)
+    </script>
 	</body>
 </html>

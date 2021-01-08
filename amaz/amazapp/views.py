@@ -3,10 +3,18 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.views.decorators.csrf import csrf_exempt
-
+from django.template.loader import render_to_string
+import json
 # Create your views here.
+@csrf_exempt
 def idx(request):
-    return render(request, 'amaz/index.html')
+    context = {
+        'test1': ['test']
+    }
+    context2 = json.dumps(context)
+
+    print(context2)
+    return render(request, 'amaz/index.html', {'test' : context2})
 
 
 def answer_list(request):
