@@ -48,11 +48,9 @@
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
+                        <div id="map" style="width:100%;height:350px;"></div>
 						<h2>멤버 받아쓰기 점수</h2>
 						<p>놀라운 토요일-도레미마켓 128화 [조세호 - 그녀의 전화번호]</p>
-                        <p id="p">
-                          여기
-                        </p>
 					</header>
                     <section>
                     <header class="content">
@@ -618,23 +616,69 @@
 
             });
         </script>
-    <script>
-        var person = JSON.parse("{{ test|escapejs }}");
 
-        var newDIV = document.createElement("div");
-        newDIV.innerHTML = person['test1'];
-        newDIV.setAttribute("id","myDiv");
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2973b252d29afb061a175276d6c6c0f0"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
 
-        var p = document.getElementById("p");
-        p.appendChild(newDIV);
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+var maplist = JSON.parse("{{ test|escapejs }}");
 
-        console.log(person)
+for (var i=0; i<2; ++i){
+            window['sw'+i]=new kakao.maps.LatLng(maplist['min_log'][i], maplist['min_lat'][i])
+            window['ne'+i]=new kakao.maps.LatLng(maplist['max_log'][i], maplist['max_lat'][i])
 
-        for (var i=0; i<5; ++i){
-            window['m'+i]=i;}
-        alert(m1);
-        alert(m2);
-        alert(m3);
+            window['rectangleBounds'+i]=new kakao.maps.LatLngBounds(window['sw'+i],window['ne'+i])
+
+            window['rectangle'+i] = new kakao.maps.Rectangle({
+                                    bounds: window['rectangleBounds'+i], // 그려질 사각형의 영역정보입니다
+                                    strokeWeight: 0, // 선의 두께입니다
+                                    strokeColor: '#FF3DE5', // 선의 색깔입니다
+                                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                    strokeStyle: 'solid', // 선의 스타일입니다
+                                    fillColor: maplist['color'][i], // 채우기 색깔입니다
+                                    fillOpacity: 0.8 // 채우기 불투명도 입니다
+                                })
+            window['rectangle'+i].setMap(map);
+}
+function getInfo() {
+    // 지도의 현재 중심좌표를 얻어옵니다
+    var center = map.getCenter();
+
+    // 지도의 현재 레벨을 얻어옵니다
+    var level = map.getLevel();
+
+    // 지도타입을 얻어옵니다
+    var mapTypeId = map.getMapTypeId();
+
+    // 지도의 현재 영역을 얻어옵니다
+    var bounds = map.getBounds();
+
+    // 영역의 남서쪽 좌표를 얻어옵니다
+    var swLatLng = bounds.getSouthWest();
+
+    // 영역의 북동쪽 좌표를 얻어옵니다
+    var neLatLng = bounds.getNorthEast();
+
+    // 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
+    var boundsStr = bounds.toString();
+
+
+    var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
+    message += '경도 ' + center.getLng() + ' 이고 <br>';
+    message += '지도 레벨은 ' + level + ' 입니다 <br> <br>';
+    message += '지도 타입은 ' + mapTypeId + ' 이고 <br> ';
+    message += '지도의 남서쪽 좌표는 ' + swLatLng.getLat() + ', ' + swLatLng.getLng() + ' 이고 <br>';
+    message += '북동쪽 좌표는 ' + neLatLng.getLat() + ', ' + neLatLng.getLng() + ' 입니다';
+
+    // 개발자도구를 통해 직접 message 내용을 확인해 보세요.
+    console.log(message);
+}
+
 </script>
 	</body>
 </html>

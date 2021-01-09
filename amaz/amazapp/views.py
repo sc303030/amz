@@ -9,7 +9,11 @@ import json
 @csrf_exempt
 def idx(request):
     context = {
-        'test1': ['test']
+        'min_log': [33.448842,33.447842],
+        'max_log':[33.450026,33.449926],
+        'min_lat':[126.570379,126.569379],
+        'max_lat':[126.568556,126.567556],
+        'color':['#FF8AEF','#9989FF']
     }
     context2 = json.dumps(context)
 
